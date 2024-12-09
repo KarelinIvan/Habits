@@ -56,4 +56,5 @@ class UserRetrieveAPIView(RetrieveAPIView):
 
 
 class UserTokenObtainPairView(TokenObtainPairView):
+    """ Получение токена """
     serializer_class = UserTokenObtainPairSerializer
