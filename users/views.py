@@ -1,7 +1,7 @@
 from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView, ListAPIView, RetrieveAPIView
 
 from users.models import Users
-from users.serializer import UserSerializer
+from users.serializer import UserSerializer, UserTokenObtainPairSerializer
 
 
 class UserCreateAPIView(CreateAPIView):
@@ -31,3 +31,7 @@ class UserRetrieveAPIView(RetrieveAPIView):
     """ Просмотр пользователя по ID """
     serializer_class = UserSerializer
     queryset = Users.objects.all()
+
+
+class UserTokenObtainPairView(TokenObtainPairView):
+    serializer_class = UserTokenObtainPairSerializer
