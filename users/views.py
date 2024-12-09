@@ -12,6 +12,12 @@ class UserCreateAPIView(CreateAPIView):
     queryset = Users.objects.all()
     permission_classes = [AllowAny]
 
+    def perform_create(self, serializer):
+        """ Активирует учетную запись пользователя после регистрации """
+        user = serializer.save(is_active=True)
+        user.set_password(self.request.data.get("password"))
+        user.save()
+
 
 class UserUpdateAPIView(UpdateAPIView):
     """ Изменение профиля пользователя """
