@@ -5,6 +5,7 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class Habit(models.Model):
+    """ Модель привычки """
     user = models.EmailField(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
