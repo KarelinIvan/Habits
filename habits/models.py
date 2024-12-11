@@ -6,16 +6,16 @@ NULLABLE = {'blank': True, 'null': True}
 
 class Habit(models.Model):
     """ Модель привычки """
-    user = models.EmailField(
+    user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         verbose_name='Пользователь',
         help_text='Создатель привычки',
         **NULLABLE
     )
     location = models.CharField(
         max_length=250,
-        default='',
+        default='Дома',
         verbose_name='Место',
         help_text='Место, в котором необходимо выполнять привычку',
     )
@@ -39,6 +39,7 @@ class Habit(models.Model):
         verbose_name='Связанная привычка',
         help_text='Привычка, которая связана с другой привычкой, '
                   'важно указывать для полезных привычек, но не для приятных',
+        **NULLABLE
     )
     periodicity = models.PositiveIntegerField(
         verbose_name='Периодичность',
