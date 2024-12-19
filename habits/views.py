@@ -17,7 +17,7 @@ class HabitCreateAPIView(CreateAPIView):
     def habit_create_owner(self, serializer):
         """ Автоматическая привязка автора """
         habit = serializer.save()
-        habit.owner = self.request.user
+        habit.user = self.request.user
         habit.save()
 
     def perform_create(self, serializer):
