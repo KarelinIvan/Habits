@@ -14,12 +14,6 @@ class HabitCreateAPIView(CreateAPIView):
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
 
-    def habit_create_owner(self, serializer):
-        """ Автоматическая привязка автора """
-        habit = serializer.save()
-        habit.user = self.request.user
-        habit.save()
-
     def perform_create(self, serializer):
         """ Создаем привычку и отправляем сообщение пользователю в Телеграм """
         habit = serializer.save()
