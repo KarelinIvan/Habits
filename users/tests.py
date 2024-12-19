@@ -36,7 +36,7 @@ class UsersTestCase(APITestCase):
         data = {
             'email': 'test@mail.ru',
             'password': "123qwe",
-            'city' : 'test',
+            'city': 'test',
             'phone': '+7 777 777 7777',
             'tg_chat_id': '743470705',
         }

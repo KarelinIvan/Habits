@@ -1,5 +1,5 @@
 from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView, ListAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.serializers import ValidationError
 
 from habits.models import Habit
@@ -13,6 +13,12 @@ class HabitCreateAPIView(CreateAPIView):
     """ Создание новой привычки """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
+
+    def habit_create_owner(self, serializer):
+        """ Автоматическая привязка автора """
+        habit = serializer.save()
+        habit.owner = self.request.user
+        habit.save()
 
     def perform_create(self, serializer):
         """ Создаем привычку и отправляем сообщение пользователю в Телеграм """
@@ -28,7 +34,7 @@ class HabitUpdateAPIView(UpdateAPIView):
     """ Изменение привычки """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def perform_update(self, serializer):
         """ Перед сохраннием привычки проверяем не ссылается связанная привычка на саму себя """
@@ -43,21 +49,21 @@ class HabitUpdateAPIView(UpdateAPIView):
 class HabitDeleteAPIView(DestroyAPIView):
     """ Удаление привычки """
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 class HabitRetrieveAPIView(RetrieveAPIView):
     """ Просмотр привычки """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 class HabitListAPIView(ListAPIView):
     """ Просмотр всех привычек пользователя """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def get_queryset(self):
         return Habit.objects.filter(user=self.request.user)
