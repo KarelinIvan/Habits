@@ -1,5 +1,5 @@
 from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView, ListAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.serializers import ValidationError
 
 from habits.models import Habit
@@ -13,6 +13,7 @@ class HabitCreateAPIView(CreateAPIView):
     """ Создание новой привычки """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         """ Создаем привычку и отправляем сообщение пользователю в Телеграм """
