@@ -15,7 +15,7 @@ class UserCreateAPIView(CreateAPIView):
     def perform_create(self, serializer):
         """ Активирует учетную запись пользователя после регистрации """
         user = serializer.save(is_active=True)
-        user.set_password(self.request.data.get("password"))
+        user.set_password(self.request.data.get('password'))
         user.save()
 
 
@@ -30,7 +30,7 @@ class UserUpdateAPIView(UpdateAPIView):
         # Сохранение данных пользователя
         user = serializer.save()
         # Установка нового пароля
-        user.set_password(self.request.data.get("password"))
+        user.set_password(self.request.data.get('password'))
         # Сохранение обновленных данных
         user.save()
 

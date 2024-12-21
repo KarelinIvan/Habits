@@ -6,4 +6,4 @@ from users.models import Users
 @admin.register(Users)
 class UserAdmin(admin.ModelAdmin):
     """Понель пользователи  в админке"""
-    list_display = ('email', 'id', 'phone',)
+    list_display = ('email', 'id', 'phone', 'tg_chat_id')
