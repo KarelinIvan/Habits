@@ -29,7 +29,7 @@ class HabitUpdateAPIView(UpdateAPIView):
     """ Изменение привычки """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def perform_update(self, serializer):
         """ Перед сохраннием привычки проверяем не ссылается связанная привычка на саму себя """
@@ -44,21 +44,21 @@ class HabitUpdateAPIView(UpdateAPIView):
 class HabitDeleteAPIView(DestroyAPIView):
     """ Удаление привычки """
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 class HabitRetrieveAPIView(RetrieveAPIView):
     """ Просмотр привычки """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 class HabitListAPIView(ListAPIView):
     """ Просмотр всех привычек пользователя """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def get_queryset(self):
         return Habit.objects.filter(user=self.request.user)
