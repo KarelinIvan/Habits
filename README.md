@@ -33,6 +33,7 @@
 Откройте .env и заполните секретные ключи (SECRET_KEY, REDIS_URL, TELEGRAM_BOT_TOKEN).
 - Запустите контейнеры:
   docker-compose up --build
+  
 Документация Swagger будет доступна здесь: http://localhost/docs
 
 Локальный запуск (с Poetry)
