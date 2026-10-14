@@ -8,19 +8,14 @@ CRUD для управления привычками (CreateAPIView, UpdateAPIV
 Валидация бизнес-правил: запрет создания циклических связей между привычками (perform_update).
 Асинхронная отправка уведомлений о создании новой привычки в Telegram через очередь задач (Celery + Redis).
 Публичный каталог полезных привычек (AllowAny) с кастомной пагинацией для оптимизации мобильного трафика.
+
 ✨ Технологии (Стек)
-
-Backend: Python 3.12+, Django 5.1+, Django REST Framework 3.15+
-
-Базы данных: PostgreSQL, Redis
-
-Асинхронность: Celery 5.4.0, eventlet
-
-Инфраструктура: Docker, Docker Compose
-
-Документация: Swagger (drf-yasg)
-
-Инструменты: Poetry (pyproject.toml), Pytest (coverage)
+Backend: Python 3.12+, Django 5.1+, Django REST Framework 3.15+;
+Базы данных: PostgreSQL, Redis;
+Асинхронность: Celery 5.4.0, eventlet;
+Инфраструктура: Docker, Docker Compose;
+Документация: Swagger (drf-yasg);
+Инструменты: Poetry (pyproject.toml), Pytest (coverage);
 
 Моя роль и архитектурные решения:
 Проектирование архитектуры REST API на базе DRF (ModelViewSet).
