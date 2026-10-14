@@ -38,16 +38,10 @@
 
 Локальный запуск (с Poetry)
 
-- Установите Poetry, если он ещё не установлен:
-  pip install poetry
-- Создайте виртуальное окружение и установите зависимости:
-- Инициализация venv и установка зависимостей
-  poetry install
-- Примените миграции базы данных:
-  poetry run python manage.py migrate
-- Создайте суперюзера для админки:
-  poetry run python manage.py createsuperuser
-- Запустите сервер разработки:
-  poetry run python manage.py runserver
+- Установите Poetry, если он ещё не установлен: pip install poetry
+- Создайте виртуальное окружение и установите зависимости: Инициализация venv и установка зависимостей poetry install
+- Примените миграции базы данных: poetry run python manage.py migrate
+- Создайте суперюзера для админки: poetry run python manage.py createsuperuser
+- Запустите сервер разработки: poetry run python manage.py runserver
 
 Документацию можно открыть тут: http://127.0.0.1:8000/docs
