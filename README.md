@@ -22,23 +22,31 @@ CRUD-операции: Реализованы через ModelViewSet (HabitCrea
 
 🔧 Запуск проекта
 
-Вариант A: Через Docker (рекомендуется)
+Через Docker (рекомендуется)
+
 Скопируйте переменные окружения из примера:
 cp .env.example .env
 Откройте .env и заполните секретные ключи (SECRET_KEY, REDIS_URL, TELEGRAM_BOT_TOKEN).
+
 Запустите контейнеры:
 docker-compose up --build
+
 Документация Swagger будет доступна здесь: http://localhost/docs
 
-Вариант B: Локальный запуск (с Poetry)
+Локальный запуск (с Poetry)
+
 Установите Poetry, если он ещё не установлен: pip install poetry
 Создайте виртуальное окружение и установите зависимости:
 # Инициализация venv и установка зависимостей
 poetry install
+
 Примените миграции базы данных:
 poetry run python manage.py migrate
+
 Создайте суперюзера для админки:
 poetry run python manage.py createsuperuser
+
 Запустите сервер разработки:
 poetry run python manage.py runserver
+
 Документацию можно открыть тут: http://127.0.0.1:8000/docs
